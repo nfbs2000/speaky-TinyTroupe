@@ -68,6 +68,14 @@
     "normalizedEventCount": 1957,
     "normalizedArtifact": "observability/data/session-1785396269903/normalized-events.json",
     "summaryArtifact": "observability/data/session-1785396269903/run-summary.json",
-    "boundary": "Configured roles come from .codex metadata. Observed workers require an Agent tool use, a child completion event, and a repository contribution. Simulated readers are not human research."
+    "boundary": "Configured roles come from .codex metadata. Observed workers require an Agent tool use, a child completion event, and a repository contribution. Simulated readers are not human research.",
+    "limitations": [
+      {
+        "kind": "length_target_missed",
+        "observedWordLikeUnits": 1188,
+        "briefTarget": "1500-2500 Korean words",
+        "note": "The lead kept the completed, edited short story instead of padding it to meet the original lower bound."
+      }
+    ]
   }
 }

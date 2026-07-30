@@ -96,6 +96,11 @@ function renderEvidence(manifest) {
       value: manifest.status,
       description: "리드가 모든 반환을 읽고 최종 원고를 작성한 상태",
     },
+    {
+      title: "Known limitation",
+      value: "1,188 / target 1,500–2,500",
+      description: "완결된 편집본을 분량 목표에 맞추려고 인위적으로 늘리지 않음",
+    },
   ];
 
   document.querySelector("#evidence-grid").innerHTML = cards
