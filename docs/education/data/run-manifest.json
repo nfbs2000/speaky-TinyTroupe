@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "tinytroupe.education-writing-run.v2",
+  "teamId": "tinytroupe-writing-room",
+  "title": "막차",
+  "form": "단편 소설",
+  "status": "completed",
+  "runtime": {
+    "provider": "claude",
+    "adapter": "claude-agent-sdk",
+    "modelProvider": "anthropic",
+    "model": "opus",
+    "appSessionId": "session-1785396269903",
+    "sdkSessionId": "a9e44c07-3c7e-4eeb-9965-6b912fc3ae3e"
+  },
+  "configuredWorkers": [
+    "persona-architect",
+    "scene-orchestrator",
+    "narrative-synthesist",
+    "audience-reaction-analyst",
+    "consistency-editor"
+  ],
+  "observedWorkers": [
+    {
+      "role": "persona-architect",
+      "childAgentId": "agent-a2969a75603c7c6d4",
+      "toolUseId": "toolu_01LTJjFEhHPgRyDEn8wBf1tx",
+      "task": "「막차」 캐스트 설계",
+      "status": "completed",
+      "artifact": "education/writing/contributions/persona-architect.md"
+    },
+    {
+      "role": "scene-orchestrator",
+      "childAgentId": "agent-a212b43a4ac6066ff",
+      "toolUseId": "toolu_015xerDeb557fUukqpecMXrR",
+      "task": "「막차」 씬과 비트 플랜 설계",
+      "status": "completed",
+      "artifact": "education/writing/contributions/scene-orchestrator.md"
+    },
+    {
+      "role": "narrative-synthesist",
+      "childAgentId": "agent-a41d5ae35ec1d12ac",
+      "toolUseId": "toolu_01XGb3KwFzFGVYxSF9j5dxyw",
+      "task": "한국어 단편 「막차」 초안 작성",
+      "status": "completed",
+      "artifact": "education/writing/contributions/narrative-synthesist.md"
+    },
+    {
+      "role": "audience-reaction-analyst",
+      "childAgentId": "agent-a44009c1b58231ddf",
+      "toolUseId": "toolu_011yWmzkarKkryvdNKorGRmZ",
+      "task": "SIMULATED 독자 반응과 구조화 요약",
+      "status": "completed",
+      "artifact": "education/writing/contributions/audience-reaction-analyst.md"
+    },
+    {
+      "role": "consistency-editor",
+      "childAgentId": "agent-aee457b77f0217902",
+      "toolUseId": "toolu_01217bdxnrx8iQpA5Z4oTJw3",
+      "task": "persona 준수, 자기일관성, 유창성 편집 노트",
+      "status": "completed",
+      "artifact": "education/writing/contributions/consistency-editor.md"
+    }
+  ],
+  "finalArtifact": "education/writing/story.md",
+  "evidence": {
+    "status": "observed",
+    "runId": "session-1785396269903",
+    "normalizedEventCount": 1957,
+    "normalizedArtifact": "observability/data/session-1785396269903/normalized-events.json",
+    "summaryArtifact": "observability/data/session-1785396269903/run-summary.json",
+    "boundary": "Configured roles come from .codex metadata. Observed workers require an Agent tool use, a child completion event, and a repository contribution. Simulated readers are not human research."
+  }
+}

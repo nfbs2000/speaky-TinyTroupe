@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="TinyTroupe 철학에서 설계한 Claude Agent SDK 글쓰기 팀의 실제 실행과 최종 글"
+    >
+    <title>TinyTroupe Writing Lab | 실제 Claude 팀 글쓰기</title>
+    <link rel="icon" href="../TinyTroupe_banner_logo_A_flat_bg-transparent.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body class="lab-page">
+    <header class="site-header">
+      <a class="brand" href="../">
+        <img src="../TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
+        <span>TinyTroupe</span>
+      </a>
+      <nav aria-label="Writing Lab 탐색">
+        <a href="#story">글</a>
+        <a href="#team">팀</a>
+        <a href="#evidence">실행 근거</a>
+        <a class="nav-primary" href="https://github.com/nfbs2000/speaky-TinyTroupe">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="lab-shell">
+      <section class="lab-intro">
+        <div>
+          <p class="eyebrow">TINY TROUPE × CLAUDE AGENT SDK</p>
+          <h1>Writing Lab</h1>
+          <p class="hero-lead">
+            Claude가 TinyTroupe의 persona, world, story, experiment 개념을 읽고
+            글쓰기 팀을 설계했습니다. 이 페이지는 구성 파일과 실제 Agent 실행을
+            구분해 공개합니다.
+          </p>
+        </div>
+        <dl class="run-summary" id="run-summary" aria-label="실행 요약">
+          <div><dt>Provider</dt><dd>불러오는 중</dd></div>
+          <div><dt>Observed workers</dt><dd>—</dd></div>
+          <div><dt>Final artifact</dt><dd>—</dd></div>
+        </dl>
+      </section>
+
+      <div class="truth-boundary">
+        <strong>진실 경계</strong>
+        <p>
+          TinyPerson은 simulated persona이고, 여기서 실행한 worker는 Claude Agent
+          SDK child agent입니다. 가상 독자 반응은 실제 인간 조사나 설문이 아닙니다.
+        </p>
+      </div>
+
+      <section class="story-layout" id="story">
+        <aside class="story-index">
+          <p class="eyebrow">FIRST PUBLIC EXPERIMENT</p>
+          <h2>막차</h2>
+          <p>한밤중 143번 버스에서 만난 네 사람의 한국어 단편.</p>
+          <nav aria-label="원고 탐색">
+            <a class="active" href="#story">최종 원고</a>
+            <a href="#notes">제작 노트</a>
+            <a href="#team">팀 구성</a>
+            <a href="#evidence">실행 근거</a>
+          </nav>
+        </aside>
+        <article class="story-prose" id="story-content" aria-live="polite">
+          <p class="loading">최종 원고를 불러오는 중입니다.</p>
+        </article>
+      </section>
+
+      <section class="band notes-band" id="notes">
+        <div class="section-heading">
+          <p class="eyebrow">WORKER CONTRIBUTIONS</p>
+          <h2>최종 글이 나오기까지</h2>
+          <p>
+            리드가 실제로 받은 다섯 worker 결과입니다. 각 원문은 접어서 제공하며
+            실행되지 않은 역할의 결과를 만들어 넣지 않습니다.
+          </p>
+        </div>
+        <div class="contribution-list" id="contribution-list"></div>
+      </section>
+
+      <section class="band" id="team">
+        <div class="section-heading">
+          <p class="eyebrow">CONFIGURED TEAM</p>
+          <h2>TinyTroupe 개념을 작업 역할로 번역한 팀</h2>
+          <p>
+            역할 설명은 configuration입니다. 아래의 observed 표시와 실제 child ID가
+            있는 항목만 이번 실행에서 수행됐습니다.
+          </p>
+        </div>
+        <div class="team-grid" id="team-grid"></div>
+      </section>
+
+      <section class="band band-ink evidence-band" id="evidence">
+        <div class="section-heading">
+          <p class="eyebrow">OBSERVED EXECUTION</p>
+          <h2>설정과 실행을 섞지 않습니다</h2>
+          <p>
+            Education Shell에서 Claude provider와 새 conversation을 사용했습니다.
+            실제 Agent tool 결과와 repository 산출물이 함께 존재할 때만 실행으로
+            표시합니다.
+          </p>
+        </div>
+        <div class="evidence-grid" id="evidence-grid"></div>
+        <div class="source-actions">
+          <a class="button button-light" href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/education">
+            공개 산출물 원본
+          </a>
+          <a class="button button-light" href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.codex">
+            팀 설정 원본
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>TinyTroupe Writing Lab</strong>
+        <p>시뮬레이션 결과와 실제 실행 증거를 구분하는 공개 교육 실험입니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../">TinyTroupe 이해하기</a>
+        <a href="https://github.com/microsoft/TinyTroupe">Upstream</a>
+        <a href="../api/tinytroupe/index.html">API Docs</a>
+      </div>
+    </footer>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

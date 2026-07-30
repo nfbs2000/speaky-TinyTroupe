@@ -1,342 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to TinyTroupe</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Luckiest+Guy&display=swap');
-
-        body {
-            font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
-            background: linear-gradient(to bottom, #f0e6d2, #f0f8ff);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: linear-gradient(to right, #ff6f61, #ffcc00);
-            color: #333;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 5px solid #cc5500;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-family: 'Luckiest Guy', cursive;
-            color: #fff;
-            text-shadow: 2px 2px 4px #000;
-        }
-        header p {
-            font-size: 1.2em;
-            margin: 10px 0 0;
-            color: #fff;
-        }
-        .buttons {
-            text-align: center;
-            margin: 0;
-        }
-        .buttons a {
-            display: inline-block;
-            background: #cc5500;
-            color: #fff;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 1.5em;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-        .buttons a:hover {
-            background: #b34700;
-        }
-        .hero {
-            text-align: center;
-            margin: 0;
-            overflow: hidden;
-            height: 30vh;
-            position: relative;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .hero img {
-            max-width: 100%;
-            height: auto;
-            position: absolute;
-            bottom: -80%;
-            left: 50%;
-            transform: translateX(-50%);
-            will-change: transform;
-        }
-        .content {
-            padding: 20px;
-            background: #fff;
-            margin: 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .content p {
-            font-size: 1.2em;
-        }
-        .content a {
-            color: #cc5500;
-        }
-        .warning {
-            background: #ffdddd;
-            border-left: 6px solid #f44336;
-            padding: 10px;
-            margin: 20px 0;
-            border-radius: 10px;
-            font-size: 0.9em; /* Smaller font size */
-        }
-        .info {
-            background: #fff3cd;
-            border-left: 6px solid #ffecb5;
-            padding: 10px;
-            margin: 20px 0;
-            border-radius: 10px;
-            font-size: 0.9em;
-        }
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .flex-item-main {
-            width: 66%;
-        }
-        .flex-item-json {
-            width: 32%;
-        }
-        .flex-item-json h2 {
-            color: #cc5500;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 1em;
-            color: #333;
-        }
-        .json-key {
-            color: #d14;
-        }
-        .json-string {
-            color: #1a1aa6;
-        }
-        .json-number {
-            color: #1c00cf;
-        }
-        .code-snippet {
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 1em;
-            color: #333;
-            margin-top: 10px;
-        }
-        .code-keyword {
-            color: #d14;
-        }
-        .code-string {
-            color: #1a1aa6;
-        }
-        .code-comment {
-            color: #999;
-        }
-        .code-function {
-            color: #795da3;
-        }
-        .mosaic {
-            background: linear-gradient(45deg, #ff6f61, #ffcc00, #f0e6d2, #cc5500, #b34700);
-            height: 10px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .sticky-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to right, #ff6f61, #ffcc00);
-            border-bottom: 3px solid #cc5500;
-            z-index: 1000;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            padding: 10px 0;
-        }
-        .sticky-nav.visible {
-            transform: translateY(0);
-        }
-        .sticky-nav .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80%;
-            margin: 0 auto;
-        }
-        .sticky-nav .nav-logo {
-            max-height: 80px;
-        }
-        .sticky-nav .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .sticky-nav .nav-buttons a {
-            background: #cc5500;
-            color: #fff;
-            padding: 8px 16px;
-            font-size: 0.9em;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-        .sticky-nav .nav-buttons a:hover {
-            background: #b34700;
-        }
-    </style>
-</head>
-<body>
-    <div class="sticky-nav" id="stickyNav">
-        <div class="nav-content">
-            <img src="./TinyTroupe_banner_logo_A_3D_bg-transparent.png" alt="TinyTroupe" class="nav-logo">
-            <div class="nav-buttons">
-                <a href="https://github.com/microsoft/tinytroupe" target="_blank">GitHub 📂</a>
-                <a href="./api/tinytroupe/index.html">API Docs 📑</a>
-                <a href="https://arxiv.org/abs/2507.09788" target="_blank">Paper 📄</a>
-            </div>
-        </div>
-    </div>
-    <header>
-        <div class="container">
-            <img src="./TinyTroupe_banner_logo_A_3D_bg-transparent.png" alt="TinyTroupe" style="max-height: 180px; margin-bottom: 10px;">
-            <p>LLM-powered multiagent persona simulation for imagination enhancement and business insights.</p>
-        </div>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="TinyTroupe의 persona simulation 개념과 Claude Agent SDK 글쓰기 팀 실험을 함께 읽는 공개 학습 페이지"
+    >
+    <title>TinyTroupe | 사람을 시뮬레이션해 생각을 확장하는 도구</title>
+    <link rel="icon" href="./TinyTroupe_banner_logo_A_flat_bg-transparent.png">
+    <link rel="stylesheet" href="./education/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./">
+        <img src="./TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
+        <span>TinyTroupe</span>
+      </a>
+      <nav aria-label="주요 탐색">
+        <a href="#concepts">핵심 개념</a>
+        <a href="#writing">글쓰기</a>
+        <a class="nav-primary" href="./education/">Writing Lab</a>
+      </nav>
     </header>
-    <div class="buttons">
-        <a href="https://github.com/microsoft/tinytroupe" target="_blank">GitHub Repo 📂</a>
-        <a href="./api/tinytroupe/index.html">API Docs 📑</a>
-        <a href="https://arxiv.org/abs/2507.09788" target="_blank">Research Paper 📄</a>
-    </div>
-    <section class="hero">
-        <div class="container">
-            <img src="./tinytroupe_stage.png" alt="A tiny office with tiny people doing some tiny jobs." id="heroImage">
-        </div>
-    </section>
-    <section class="content">
-        <div class="container">
-            <div class="info">
-                <h2>Get Started with TinyTroupe</h2>
-                <p>Visit our <a href="https://github.com/microsoft/tinytroupe" target="_blank">GitHub repository</a> to get started with TinyTroupe. You'll find installation instructions, documentation, and examples to help you begin your journey with TinyTroupe.</p>
-            </div>
-            <div class="flex-container">
-                <div class="flex-item-main">
 
-                    <p>TinyTroupe is an experimental Python library that allows the <strong>simulation</strong> of people with specific personalities, interests, and goals. These artificial agents - <strong>TinyPerson</strong>s - can listen to us and one another, reply back, and go about their lives in simulated <strong>TinyWorld</strong> environments. This is achieved by leveraging the power of Large Language Models (LLMs), notably GPT-4, to generate realistic simulated behavior.</p>
-                    <p>Here are some application ideas to <strong>enhance human imagination</strong>:</p>
-                    <ul>
-                        <li><strong>Advertisement:</strong> Evaluate digital ads offline with a simulated audience before spending money on them! 📺</li>
-                        <li><strong>Software Testing:</strong> Provide test input to systems and evaluate the results. 🧪</li>
-                        <li><strong>Training and exploratory data:</strong> Generate realistic synthetic data for training models or opportunity analyses. 📊</li>
-                        <li><strong>Product and project management:</strong> Read project or product proposals and give feedback from the perspective of specific personas. 📋</li>
-                        <li><strong>Brainstorming:</strong> Simulate focus groups and deliver great product feedback at a fraction of the cost! 💡</li>
-                    </ul>
-                    <p><i>P.S.: We know Comic Sans is a terrible font choice, except for fun projects like this one!</i> 😜</p>
-                </div>
-                <div class="flex-item-json">
-                    <h2>Some code snippets 👇</h2>
-                    <pre>
-<span class="json-key">{
-    "type"</span>: <span class="json-string">"TinyPerson"</span>,
-    <span class="json-key">"persona"</span>: {
-        <span class="json-key">"name"</span>: <span class="json-string">"Lisa Carter"</span>,
-        <span class="json-key">"age"</span>: <span class="json-number">28</span>,
-        <span class="json-key">"occupation"</span>: {
-            <span class="json-key">"title"</span>: <span class="json-string">"Data Scientist"</span>,
-            <span class="json-key">"organization"</span>: <span class="json-string">"Microsoft"</span>
-        },
-        <span class="json-key">"personality"</span>: {
-            <span class="json-key">"traits"</span>: [
-                <span class="json-string">"You are curious."</span>,
-                <span class="json-string">"You are analytical."</span>,
-                <span class="json-string">"You are friendly."</span>,
-                <span class="json-string">"You don't give up."</span>
-            ]
-        }
-        (...)
-    }
-}</pre>
-                    <div class="code-snippet">
-                        <code>
-<span class="code-comment"># Interact with a TinyPerson</span><br>
-lisa.<span class="code-function">listen_and_act</span>(<span class="code-string">"Tell me about your life."</span>)
-                        </code>
-                    </div>
-                    <div class="code-snippet">
-                        <code>
-<span class="code-comment"># Define a TinyWorld</span><br>
-world = TinyWorld(<span class="code-string">"Chat Room"</span>, [lisa, oscar])<br>
-world.<span class="code-function">make_everyone_accessible</span>()<br>
-world.<span class="code-function">run</span>(<span class="code-number">4</span>)
-                        </code>
-                    </div>
-                    <div class="code-snippet">
-                        <code>
-<span class="code-comment"># Generate a new TinyPerson using TinyPersonFactory</span><br>
+    <main>
+      <section class="hero">
+        <img class="hero-visual" src="./tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
+        <div class="hero-copy">
+          <p class="eyebrow">MICRO-SIMULATION · WRITING EXPERIMENT</p>
+          <h1>TinyTroupe</h1>
+          <p class="hero-lead">
+            구체적인 persona와 환경을 설계하고, 상호작용을 실행하고, 그 결과를
+            분석하는 실험 도구입니다. 답을 대신 내는 assistant가 아니라 사람을
+            이해하기 위한 simulator라는 경계를 먼저 배웁니다.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./education/">공개 글쓰기 실험 읽기</a>
+            <a class="button" href="https://github.com/nfbs2000/speaky-TinyTroupe">소스 보기</a>
+          </div>
+        </div>
+      </section>
 
-factory = TinyPersonFactory(<span class="code-string">"A hospital in São Paulo."</span>)<br>
-person = factory.<span class="code-function">generate_person</span>(<span class="code-string">"Create a Brazilian doctor who loves pets and nature."</span>)
-                        </code>
-                    </div>
-                </div>
-            </div>
+      <section class="band" id="concepts">
+        <div class="section-heading">
+          <p class="eyebrow">CORE MODEL</p>
+          <h2>사람, 환경, 서사를 분리해 설계합니다</h2>
+          <p>
+            각 추상화가 무엇을 소유하는지 알면 시뮬레이션 결과와 실제 관찰을
+            혼동하지 않고 글쓰기 재료로 사용할 수 있습니다.
+          </p>
         </div>
-    </section>
-    <!-- Remove the mosaic section -->
-    <!-- <div class="mosaic"></div> -->
-    <section class="content warning">
-        <div class="container">
-            <h2>Legal Disclaimer ⚖️</h2>
-            <p>TinyTroupe is for research and simulation only. TinyTroupe is a research and experimental technology, which relies on Artificial Intelligence (AI) models to generate text content. The AI system output may include unrealistic, inappropriate, harmful or inaccurate results, including factual errors. You are responsible for reviewing the generated content (and adapting it if necessary) before using it, as you are fully responsible for determining its accuracy and fit for purpose. We advise using TinyTroupe’s outputs for insight generation and not for direct decision-making. Generated outputs do not reflect the opinions of Microsoft. You are fully responsible for any use you make of the generated outputs. For more information regarding the responsible use of this technology, see the <a href="./../RESPONSIBLE_AI_FAQ.md">RESPONSIBLE_AI_FAQ.md</a>.</p>
-            <p><strong>PROHIBITED USES:</strong> TinyTroupe is not intended to simulate sensitive (e.g. violent or sexual) situations. Moreover, outputs must not be used to deliberately deceive, mislead or harm people in any way. You are fully responsible for any use you make and must comply with all applicable laws and regulations.</p>
+        <div class="concept-grid">
+          <article class="concept">
+            <span class="concept-index">01</span>
+            <h3>TinyPerson</h3>
+            <p>배경, 성향, 목표, 말투와 선호를 가진 가상 인물입니다.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-index">02</span>
+            <h3>TinyWorld</h3>
+            <p>여러 persona가 자극을 받고 단계적으로 상호작용하는 실험 환경입니다.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-index">03</span>
+            <h3>TinyStory</h3>
+            <p>관찰된 상호작용 trace를 명시적인 목적에 맞는 서사로 연결합니다.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-index">04</span>
+            <h3>Experiment Loop</h3>
+            <p>설계, 실행, 분석, 수정의 반복을 통해 질문과 시뮬레이션을 다듬습니다.</p>
+          </article>
         </div>
-    </section>
+      </section>
+
+      <section class="band band-ink" id="writing">
+        <div class="section-heading">
+          <p class="eyebrow">WRITING WITH SIMULATION</p>
+          <h2>어떤 글을 만들 수 있나</h2>
+          <p>
+            TinyTroupe 원전과 예제가 보여주는 패턴을 글쓰기 과정으로 번역할 수
+            있습니다. 시뮬레이션 반응은 실제 인간 조사 결과가 아닙니다.
+          </p>
+        </div>
+        <div class="writing-list">
+          <article>
+            <h3>Persona 대화극</h3>
+            <p>서로 다른 배경과 목표를 가진 인물의 목소리를 설계합니다.</p>
+          </article>
+          <article>
+            <h3>장면 기반 단편</h3>
+            <p>TinyWorld식 환경과 단계별 자극을 장면과 갈등의 뼈대로 사용합니다.</p>
+          </article>
+          <article>
+            <h3>모의 인터뷰</h3>
+            <p>특정 독자나 사용자의 관점을 탐색하되 simulated임을 명시합니다.</p>
+          </article>
+          <article>
+            <h3>초안 비평</h3>
+            <p>가상 독자 반응과 일관성 검사를 분리해 수정 근거를 만듭니다.</p>
+          </article>
+          <article>
+            <h3>교육 시나리오</h3>
+            <p>목적이 분명한 상황을 설계하고 다양한 선택과 반응을 비교합니다.</p>
+          </article>
+          <article>
+            <h3>팀 제작 글</h3>
+            <p>Claude 리드가 실제 child 결과를 수집해 하나의 원고로 종합합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band lab-callout">
+        <img src="./tinytroupe_workshop.png" alt="TinyTroupe 글쓰기 워크숍">
+        <div>
+          <p class="eyebrow">OBSERVED CLAUDE RUN</p>
+          <h2>정의만 한 팀이 아니라, 실제로 실행한 팀을 공개합니다</h2>
+          <p>
+            Education Shell의 Claude가 TinyTroupe 원전을 읽고 역할을 설계했습니다.
+            이어지는 새 세션에서 다섯 child agent를 실제 실행해 캐릭터, 장면, 초안,
+            독자 반응과 편집 노트를 만들고 리드가 최종 글을 종합했습니다.
+          </p>
+          <a class="text-link" href="./education/">팀, 글, 실행 근거 함께 보기 →</a>
+        </div>
+      </section>
+    </main>
+
     <footer>
-        <div class="container">
-            <p>&copy; 2025 TinyTroupe. All rights reserved.</p>
-            <p>This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general" target="_blank">Microsoft's Trademark & Brand Guidelines</a>. Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.</p>
-        </div>
+      <div>
+        <strong>TinyTroupe 공개 학습판</strong>
+        <p>Microsoft TinyTroupe 공개 소스와 MIT License를 존중합니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/microsoft/TinyTroupe">Upstream</a>
+        <a href="https://arxiv.org/abs/2507.09788">Paper</a>
+        <a href="./api/tinytroupe/index.html">API Docs</a>
+        <a href="https://github.com/nfbs2000/speaky-TinyTroupe/blob/main/LICENSE">License</a>
+      </div>
     </footer>
-    <script>
-        // Sticky navigation on scroll
-        window.addEventListener('scroll', function() {
-            const stickyNav = document.getElementById('stickyNav');
-            const scrolled = window.pageYOffset;
-            const parallaxSpeed = 0.5;
-            const heroImage = document.getElementById('heroImage');
-            
-            // Show sticky nav after scrolling past header
-            if (scrolled > 200) {
-                stickyNav.classList.add('visible');
-            } else {
-                stickyNav.classList.remove('visible');
-            }
-            
-            // Parallax effect for hero image
-            if (heroImage) {
-                const yPos = -(scrolled * parallaxSpeed);
-                heroImage.style.transform = `translateX(-50%) translateY(${yPos}px)`;
-            }
-        });
-    </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,48 @@
+{
+  "id": "tinytroupe-writing-room",
+  "label": "TinyTroupe Writing Room",
+  "roles": [
+    {
+      "id": "writing-room-showrunner",
+      "label": "Writing Room Showrunner",
+      "kind": "lead",
+      "summary": "목적과 독자를 정하고 worker 결과를 실제로 읽어 하나의 원고로 종합합니다.",
+      "sourceBasis": "TinyTroupe experiment loop + TinyStory purpose binding"
+    },
+    {
+      "id": "persona-architect",
+      "label": "Persona Architect",
+      "kind": "worker",
+      "summary": "배경, 성향, 목표와 말투가 있는 캐릭터 시트를 만들고 brief에 맞는지 점검합니다.",
+      "sourceBasis": "TinyPerson + fragments + TinyPersonFactory + TinyPersonValidator"
+    },
+    {
+      "id": "scene-orchestrator",
+      "label": "Scene Orchestrator",
+      "kind": "worker",
+      "summary": "환경, 시작 자극과 순서가 있는 장면·비트 플랜을 설계합니다.",
+      "sourceBasis": "TinyWorld + broadcast/run phased facilitation"
+    },
+    {
+      "id": "narrative-synthesist",
+      "label": "Narrative Synthesist",
+      "kind": "worker",
+      "summary": "캐릭터와 비트 플랜을 목적에 맞는 연속적인 초안으로 렌더링합니다.",
+      "sourceBasis": "TinyStory start/continue + story prompts"
+    },
+    {
+      "id": "audience-reaction-analyst",
+      "label": "Audience Reaction Analyst",
+      "kind": "worker",
+      "summary": "명확히 simulated로 표시한 독자 반응을 만들고 반복되는 반응을 구조화합니다.",
+      "sourceBasis": "TinyWorld focus group + ResultsExtractor"
+    },
+    {
+      "id": "consistency-editor",
+      "label": "Consistency Editor",
+      "kind": "worker",
+      "summary": "persona 준수, 자기 일관성과 문장 유창성을 기준으로 수정 지점을 찾습니다.",
+      "sourceBasis": "ActionGenerator quality checks"
+    }
+  ]
+}
