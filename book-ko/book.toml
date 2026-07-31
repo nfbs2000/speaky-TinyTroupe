@@ -1,0 +1,17 @@
+[book]
+authors = ["Microsoft 원작 · nfbs2000 한국어 해설"]
+language = "ko"
+src = "src"
+title = "TinyTroupe 소스 읽기"
+description = "persona simulation, 기억, 환경, 추출, 실험과 검증으로 읽는 TinyTroupe 한국어 소스 가이드"
+
+[build]
+build-dir = "../docs/guide"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+site-url = "/speaky-TinyTroupe/guide/"
+git-repository-url = "https://github.com/nfbs2000/speaky-TinyTroupe"
+additional-js = ["mermaid-init.js"]
+additional-css = ["theme.css", "mermaid.css"]

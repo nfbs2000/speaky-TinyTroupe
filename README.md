@@ -1,6 +1,9 @@
 # TinyTroupe 🤠🤓🥸🧐
 [![Core Tests](https://github.com/microsoft/TinyTroupe/actions/workflows/core-tests.yml/badge.svg)](https://github.com/microsoft/TinyTroupe/actions/workflows/core-tests.yml)
 
+> [TinyTroupe 한국어 소스 가이드](https://nfbs2000.github.io/speaky-TinyTroupe/guide/)에서
+> persona simulation, 기억, 환경, 실험, 추출과 검증의 실제 구현을 읽을 수 있습니다.
+
 <p align="center">
   <a href="https://trendshift.io/repositories/12206" target="_blank"><img src="https://trendshift.io/api/badge/repositories/12206" alt="Yeah, we are totally fine for not getting to #1, no hard feelings at all." style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
@@ -840,5 +843,4 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
-
 
