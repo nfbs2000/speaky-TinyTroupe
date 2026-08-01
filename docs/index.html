@@ -3,143 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="TinyTroupe의 persona simulation 개념과 Claude Agent SDK 글쓰기 팀 실험을 함께 읽는 공개 학습 페이지"
-    >
-    <title>TinyTroupe | 사람을 시뮬레이션해 생각을 확장하는 도구</title>
-    <link rel="icon" href="./TinyTroupe_banner_logo_A_flat_bg-transparent.png">
-    <link rel="stylesheet" href="./education/styles.css">
+    <meta http-equiv="refresh" content="0; url=./guide/">
+    <title>TinyTroupe 소스 가이드로 이동</title>
+    <link rel="canonical" href="./guide/">
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #1f2937;
+        background: #f8fafc;
+      }
+      main {
+        width: min(42rem, calc(100% - 2rem));
+        padding: 2rem;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+      a {
+        color: #1d4ed8;
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="./">
-        <img src="./TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
-        <span>TinyTroupe</span>
-      </a>
-      <nav aria-label="주요 탐색">
-        <a href="#concepts">핵심 개념</a>
-        <a href="./guide/">소스 가이드</a>
-        <a href="#writing">글쓰기</a>
-        <a class="nav-primary" href="./education/">Writing Lab</a>
-      </nav>
-    </header>
-
     <main>
-      <section class="hero">
-        <img class="hero-visual" src="./tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
-        <div class="hero-copy">
-          <p class="eyebrow">MICRO-SIMULATION · WRITING EXPERIMENT</p>
-          <h1>TinyTroupe</h1>
-          <p class="hero-lead">
-            구체적인 persona와 환경을 설계하고, 상호작용을 실행하고, 그 결과를
-            분석하는 실험 도구입니다. 답을 대신 내는 assistant가 아니라 사람을
-            이해하기 위한 simulator라는 경계를 먼저 배웁니다.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="./guide/">한국어 소스 가이드</a>
-            <a class="button button-primary" href="./education/">공개 글쓰기 실험 읽기</a>
-            <a class="button" href="https://github.com/nfbs2000/speaky-TinyTroupe">소스 보기</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="band" id="concepts">
-        <div class="section-heading">
-          <p class="eyebrow">CORE MODEL</p>
-          <h2>사람, 환경, 서사를 분리해 설계합니다</h2>
-          <p>
-            각 추상화가 무엇을 소유하는지 알면 시뮬레이션 결과와 실제 관찰을
-            혼동하지 않고 글쓰기 재료로 사용할 수 있습니다.
-          </p>
-        </div>
-        <div class="concept-grid">
-          <article class="concept">
-            <span class="concept-index">01</span>
-            <h3>TinyPerson</h3>
-            <p>배경, 성향, 목표, 말투와 선호를 가진 가상 인물입니다.</p>
-          </article>
-          <article class="concept">
-            <span class="concept-index">02</span>
-            <h3>TinyWorld</h3>
-            <p>여러 persona가 자극을 받고 단계적으로 상호작용하는 실험 환경입니다.</p>
-          </article>
-          <article class="concept">
-            <span class="concept-index">03</span>
-            <h3>TinyStory</h3>
-            <p>관찰된 상호작용 trace를 명시적인 목적에 맞는 서사로 연결합니다.</p>
-          </article>
-          <article class="concept">
-            <span class="concept-index">04</span>
-            <h3>Experiment Loop</h3>
-            <p>설계, 실행, 분석, 수정의 반복을 통해 질문과 시뮬레이션을 다듬습니다.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="band band-ink" id="writing">
-        <div class="section-heading">
-          <p class="eyebrow">WRITING WITH SIMULATION</p>
-          <h2>어떤 글을 만들 수 있나</h2>
-          <p>
-            TinyTroupe 원전과 예제가 보여주는 패턴을 글쓰기 과정으로 번역할 수
-            있습니다. 시뮬레이션 반응은 실제 인간 조사 결과가 아닙니다.
-          </p>
-        </div>
-        <div class="writing-list">
-          <article>
-            <h3>Persona 대화극</h3>
-            <p>서로 다른 배경과 목표를 가진 인물의 목소리를 설계합니다.</p>
-          </article>
-          <article>
-            <h3>장면 기반 단편</h3>
-            <p>TinyWorld식 환경과 단계별 자극을 장면과 갈등의 뼈대로 사용합니다.</p>
-          </article>
-          <article>
-            <h3>모의 인터뷰</h3>
-            <p>특정 독자나 사용자의 관점을 탐색하되 simulated임을 명시합니다.</p>
-          </article>
-          <article>
-            <h3>초안 비평</h3>
-            <p>가상 독자 반응과 일관성 검사를 분리해 수정 근거를 만듭니다.</p>
-          </article>
-          <article>
-            <h3>교육 시나리오</h3>
-            <p>목적이 분명한 상황을 설계하고 다양한 선택과 반응을 비교합니다.</p>
-          </article>
-          <article>
-            <h3>팀 제작 글</h3>
-            <p>Claude 리드가 실제 child 결과를 수집해 하나의 원고로 종합합니다.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="band lab-callout">
-        <img src="./tinytroupe_workshop.png" alt="TinyTroupe 글쓰기 워크숍">
-        <div>
-          <p class="eyebrow">OBSERVED CLAUDE RUN</p>
-          <h2>정의만 한 팀이 아니라, 실제로 실행한 팀을 공개합니다</h2>
-          <p>
-            Education Shell의 Claude가 TinyTroupe 원전을 읽고 역할을 설계했습니다.
-            이어지는 새 세션에서 다섯 child agent를 실제 실행해 캐릭터, 장면, 초안,
-            독자 반응과 편집 노트를 만들고 리드가 최종 글을 종합했습니다.
-          </p>
-          <a class="text-link" href="./education/">팀, 글, 실행 근거 함께 보기 →</a>
-        </div>
-      </section>
+      <h1>TinyTroupe 소스 가이드</h1>
+      <p>이 저장소의 공개 첫 화면은 한국어 소스 가이드로 이동합니다.</p>
+      <p><a href="./guide/">TinyTroupe 소스 가이드 열기</a></p>
     </main>
-
-    <footer>
-      <div>
-        <strong>TinyTroupe 공개 학습판</strong>
-        <p>Microsoft TinyTroupe 공개 소스와 MIT License를 존중합니다.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/microsoft/TinyTroupe">Upstream</a>
-        <a href="https://arxiv.org/abs/2507.09788">Paper</a>
-        <a href="./api/tinytroupe/index.html">API Docs</a>
-        <a href="https://github.com/nfbs2000/speaky-TinyTroupe/blob/main/LICENSE">License</a>
-      </div>
-    </footer>
   </body>
 </html>

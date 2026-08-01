@@ -219,14 +219,16 @@ extraction 또는 reduction 방법
 실패, 누락, fallback과 비용
 결론이 적용되는 범위
 </code></pre>
-<h2 id="claude-글쓰기-팀-실험을-읽는-정확한-방법"><a class="header" href="#claude-글쓰기-팀-실험을-읽는-정확한-방법">Claude 글쓰기 팀 실험을 읽는 정확한 방법</a></h2>
-<p>이 fork의 <a href="../../education/">Writing Lab</a>은 두 시스템을 일부러 분리했다.</p>
+<h2 id="다른-agent-시스템과-섞지-않는-방법"><a class="header" href="#다른-agent-시스템과-섞지-않는-방법">다른 agent 시스템과 섞지 않는 방법</a></h2>
+<p>TinyTroupe는 persona simulation library이고, Claude/OpenCode/Codex의 task-routing team이
+아니다. 다른 agent 시스템 위에 TinyTroupe 개념을 올릴 수는 있지만, 그 경우에도 실행
+증거와 simulation 결과를 분리해야 한다.</p>
 <ul>
 <li>TinyTroupe는 character, simulated reader, world와 possible reaction이라는 설계 관점을 준다.</li>
-<li>Claude Agent SDK는 실제 child worker에게 character, scene, draft, reader response,
-editing task를 위임한다.</li>
-<li>공개 manifest는 Claude worker가 실행됐다는 근거이고 TinyPerson이 실행됐다는 근거가 아니다.</li>
-<li>완성된 글은 creative artifact이며 실제 인간 독자 연구 결과가 아니다.</li>
+<li>Claude/OpenCode/Codex worker 실행은 별도의 runtime evidence가 있어야 말할 수 있다.</li>
+<li>공개 manifest가 있다면 그것은 worker 실행의 근거이지 TinyPerson이 현실 사람처럼
+검증됐다는 근거가 아니다.</li>
+<li>생성된 글과 simulated reader 반응은 creative artifact이며 실제 인간 독자 연구 결과가 아니다.</li>
 </ul>
 <p>이 구분을 유지하면 TinyTroupe는 “가짜 사람에게 물어보고 사실처럼 말하는 도구”가 아니라,
 질문과 관점을 넓히고 실제 검증이 어디 필요한지 드러내는 실험 도구가 된다.</p>
@@ -238,7 +240,6 @@ trajectory, 모델이 추출한 해석, 실제 경험 자료를 서로 다른 �
 </div>
 <h2 id="다음-읽기"><a class="header" href="#다음-읽기">다음 읽기</a></h2>
 <ul>
-<li><a href="../../education/">TinyTroupe 공개 Writing Lab</a></li>
 <li><a href="https://github.com/microsoft/TinyTroupe">upstream README</a></li>
 <li><a href="https://arxiv.org/abs/2507.09788">TinyTroupe paper</a></li>
 <li><a href="../source-map.html">소스 지도와 출처</a></li>

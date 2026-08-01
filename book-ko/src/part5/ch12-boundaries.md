@@ -42,15 +42,17 @@ extraction 또는 reduction 방법
 결론이 적용되는 범위
 ```
 
-## Claude 글쓰기 팀 실험을 읽는 정확한 방법
+## 다른 agent 시스템과 섞지 않는 방법
 
-이 fork의 [Writing Lab](../../education/)은 두 시스템을 일부러 분리했다.
+TinyTroupe는 persona simulation library이고, Claude/OpenCode/Codex의 task-routing team이
+아니다. 다른 agent 시스템 위에 TinyTroupe 개념을 올릴 수는 있지만, 그 경우에도 실행
+증거와 simulation 결과를 분리해야 한다.
 
 - TinyTroupe는 character, simulated reader, world와 possible reaction이라는 설계 관점을 준다.
-- Claude Agent SDK는 실제 child worker에게 character, scene, draft, reader response,
-  editing task를 위임한다.
-- 공개 manifest는 Claude worker가 실행됐다는 근거이고 TinyPerson이 실행됐다는 근거가 아니다.
-- 완성된 글은 creative artifact이며 실제 인간 독자 연구 결과가 아니다.
+- Claude/OpenCode/Codex worker 실행은 별도의 runtime evidence가 있어야 말할 수 있다.
+- 공개 manifest가 있다면 그것은 worker 실행의 근거이지 TinyPerson이 현실 사람처럼
+  검증됐다는 근거가 아니다.
+- 생성된 글과 simulated reader 반응은 creative artifact이며 실제 인간 독자 연구 결과가 아니다.
 
 이 구분을 유지하면 TinyTroupe는 “가짜 사람에게 물어보고 사실처럼 말하는 도구”가 아니라,
 질문과 관점을 넓히고 실제 검증이 어디 필요한지 드러내는 실험 도구가 된다.
@@ -64,7 +66,6 @@ trajectory, 모델이 추출한 해석, 실제 경험 자료를 서로 다른 �
 
 ## 다음 읽기
 
-- [TinyTroupe 공개 Writing Lab](../../education/)
 - [upstream README](https://github.com/microsoft/TinyTroupe)
 - [TinyTroupe paper](https://arxiv.org/abs/2507.09788)
 - [소스 지도와 출처](../source-map.md)

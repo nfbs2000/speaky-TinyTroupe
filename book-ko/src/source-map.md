@@ -33,12 +33,10 @@
 - [RESPONSIBLE_AI_FAQ.md](https://github.com/microsoft/TinyTroupe/blob/a6244b358a1fe1c71bf751f7ba0f8dfa368ec5a4/RESPONSIBLE_AI_FAQ.md)
 - [MIT License](https://github.com/microsoft/TinyTroupe/blob/a6244b358a1fe1c71bf751f7ba0f8dfa368ec5a4/LICENSE)
 
-## 이 fork의 교육 계층
+## 이 fork의 한국어 해설 계층
 
-- [공개 첫 화면](../)
-- [TinyTroupe Writing Lab](../education/)
-- [Writing Lab 설계 문서](https://github.com/nfbs2000/speaky-TinyTroupe/blob/main/education/docs/tinytroupe-writing-lab-design.md)
+- [한국어 가이드 배포본](../)
 - [한국어 가이드 source](https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/book-ko)
 
-교육 계층의 Claude worker, run manifest와 생성 글은 upstream TinyTroupe 기능으로
-오해하지 않는다. upstream code 해설과 fork 실험을 이 페이지에서 명시적으로 분리한다.
+이 한국어 해설 계층은 upstream code를 읽기 위한 문서다. 별도 agent team 실험이나
+생성 글은 이 가이드의 근거로 취급하지 않는다.
