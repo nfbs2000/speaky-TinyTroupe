@@ -3,36 +3,116 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="0; url=./guide/">
-    <title>TinyTroupe 소스 가이드로 이동</title>
-    <link rel="canonical" href="./guide/">
+    <title>TinyTroupe 공개 학습 허브</title>
     <style>
+      :root {
+        --bg: #f6f8fb;
+        --ink: #162033;
+        --muted: #657085;
+        --line: #d9e0ea;
+        --panel: #ffffff;
+        --accent: #2563eb;
+      }
       body {
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: #1f2937;
-        background: #f8fafc;
+        color: var(--ink);
+        background: var(--bg);
       }
       main {
-        width: min(42rem, calc(100% - 2rem));
-        padding: 2rem;
-        border: 1px solid #d8dee8;
-        border-radius: 8px;
-        background: #ffffff;
+        width: min(1080px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: clamp(1.5rem, 5vw, 4rem) 0;
       }
-      a {
-        color: #1d4ed8;
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .eyebrow {
+        margin: 0 0 0.55rem;
+        color: #1e3a8a;
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 6vw, 4.8rem);
+        line-height: 1.08;
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .hero img {
+        width: 100%;
+        min-height: 300px;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .link-card {
+        min-height: 180px;
+        padding: 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        text-decoration: none;
+        color: inherit;
+      }
+      .link-card strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.6rem;
+      }
+      .link-card span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      @media (max-width: 760px) {
+        .hero,
+        .links {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>TinyTroupe 소스 가이드</h1>
-      <p>이 저장소의 공개 첫 화면은 한국어 소스 가이드로 이동합니다.</p>
-      <p><a href="./guide/">TinyTroupe 소스 가이드 열기</a></p>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">TINY TROUPE PUBLIC LEARNING</p>
+          <h1>TinyTroupe를 소스와 Claude 팀 산출물로 읽습니다</h1>
+          <p>
+            이 저장소는 Microsoft TinyTroupe 원전의 한국어 소스 가이드와, 그 방법론을
+            Claude 스킬·에이전트·팀 런으로 재현한 공개 산출물을 분리해서 보여준다.
+          </p>
+        </div>
+        <img src="./tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
+      </section>
+      <section class="links" aria-label="공개 페이지">
+        <a class="link-card" href="./guide/">
+          <strong>한국어 소스 가이드</strong>
+          <span>TinyPerson, TinyWorld, memory, extraction, validation을 upstream source 기준으로 읽는 mdBook.</span>
+        </a>
+        <a class="link-card" href="./claude-team/">
+          <strong>Claude 팀·스킬·런</strong>
+          <span>.claude 폴더의 팀 정의, 스킬, 에이전트, workflow, team-runs 원문과 확인 코멘트.</span>
+        </a>
+      </section>
     </main>
   </body>
 </html>

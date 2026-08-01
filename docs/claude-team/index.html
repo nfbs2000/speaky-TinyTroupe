@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TinyTroupe Claude Team | Skills, Agents, Runs</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <img src="../TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
+        <span>TinyTroupe Claude Team</span>
+      </a>
+      <nav aria-label="주요 링크">
+        <a href="../guide/">소스 가이드</a>
+        <a href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude">GitHub .claude</a>
+        <a href="#runs">팀 런</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">CLAUDE NATIVE TEAM ARTIFACT</p>
+          <h1>TinyTroupe 방법론을 Claude 스킬과 팀으로 재현한 공개판</h1>
+          <p class="lead">
+            이 페이지는 저장소의 <code>.claude</code> 폴더를 그대로 읽어 팀 정의, 에이전트,
+            스킬, 워크플로, 실제 팀 런 산출물을 보여준다. Python 실행이나 OpenAI API 키 없이
+            TinyTroupe의 persona, world, extraction, story 방법을 Claude 팀 작업 규율로 옮긴
+            결과다.
+          </p>
+        </div>
+        <img class="intro-image" src="../tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
+      </section>
+
+      <section class="commentary-grid" aria-label="Codex 확인 코멘트">
+        <article>
+          <p class="eyebrow">CODEX COMMENT</p>
+          <h2>이 팀이 하는 일</h2>
+          <p>
+            스킬은 TinyTroupe 방법론의 단일 출처이고, 에이전트는 역할과 프로토콜만 가진다.
+            리드는 브리프와 통합을 맡고, 워커들은 캐스트, 씬 플랜, 초안, 시뮬레이션 독자 반응,
+            편집 노트를 각각 반환한다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">LATEST RUN</p>
+          <h2>이번 런에서 해결된 것</h2>
+          <p>
+            <strong>2026-08-02-bakery-last-day</strong> 런은 한국어 단편 <strong>은성제과</strong>를
+            만들었다. 중간 판본의 카드 비트 누락, 셔터 클로징 위반, 우유 결말의 신파 위험,
+            재고/현금 회계 문제를 단계별 검증과 표적 수정으로 정리했다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">QUALITY READ</p>
+          <h2>최종 글 수준</h2>
+          <p>
+            런 기록 기준 최종 원고는 공백 포함 2,988자, 공백 제외 2,321자다. 에디터 판정은
+            페르소나 일관성 8, 자기 일관성 10, 유창성 8, must-fix 0건이다. 시뮬레이션 독자
+            반응은 목소리 구별 yes 3/3, 신파 0건으로 기록됐다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">BOUNDARY</p>
+          <h2>남은 문제와 경계</h2>
+          <p>
+            독자 반응은 전부 SIMULATED이며 실제 설문이 아니다. 제빵 공정 시간, 적립 관행,
+            폐업 신고 기한 같은 사실성은 검증되지 않았다. 원시 런타임 이벤트는 이 페이지에
+            포함하지 않고, 공개된 <code>.claude/team-runs</code> 문서 기준으로만 읽어야 한다.
+          </p>
+        </article>
+      </section>
+
+      <section class="stats-row" id="stats" aria-live="polite">
+        <div><span class="stat-value">-</span><span class="stat-label">skills</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">agents</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">workflows</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">runs</span></div>
+      </section>
+
+      <section class="layout">
+        <aside class="browser" aria-label=".claude 파일 목록">
+          <div class="browser-header">
+            <h2>.claude 원문</h2>
+            <p>커밋된 <code>main</code> 기준 파일을 불러온다.</p>
+          </div>
+          <div id="file-groups" class="file-groups">
+            <p class="loading">파일 목록을 불러오는 중입니다.</p>
+          </div>
+        </aside>
+
+        <section class="viewer" aria-label="선택 파일 원문">
+          <div class="viewer-toolbar">
+            <div>
+              <p class="eyebrow">RAW FILE VIEW</p>
+              <h2 id="viewer-title">파일을 선택하세요</h2>
+            </div>
+            <a id="github-link" class="button" href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude">GitHub에서 보기</a>
+          </div>
+          <pre id="file-content" class="file-content">왼쪽 목록에서 팀 정의, 스킬, 에이전트, 워크플로 또는 팀 런 파일을 선택하면 원문이 그대로 표시됩니다.</pre>
+        </section>
+      </section>
+
+      <section class="runs-band" id="runs">
+        <div class="section-heading">
+          <p class="eyebrow">TEAM RUNS</p>
+          <h2>매번 갱신되는 팀 런 산출물</h2>
+          <p>
+            <code>.claude/team-runs</code> 아래의 커밋된 파일을 자동으로 묶어 보여준다. 새 런을
+            이 경로에 추가하고 <code>main</code>에 푸시하면 이 목록도 같이 갱신된다.
+          </p>
+        </div>
+        <div id="run-map" class="run-map"></div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>TinyTroupe Claude Team</strong>
+      <span>팀/스킬/런 문서는 공개 학습용 산출물이며, 시뮬레이션과 실제 인간 데이터를 구분한다.</span>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

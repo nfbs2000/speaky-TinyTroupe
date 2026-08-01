@@ -9,6 +9,9 @@ tests_cache.pickle
 
 outputs/
 
+# Claude local runtime state
+.claude/scheduled_tasks.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
