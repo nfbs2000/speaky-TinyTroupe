@@ -32,6 +32,11 @@ const FALLBACK_PATHS = [
   ".claude/team-runs/2026-08-02-bakery-last-day/process/04-review-checklist.md",
   ".claude/team-runs/2026-08-02-bakery-last-day/process/05-draft-v1.md",
   ".claude/team-runs/2026-08-02-bakery-last-day/process/06-draft-deltas.md",
+  ".claude/workflows/runs/2026-08-02-focus-group-subscription/00-run-config.md",
+  ".claude/workflows/runs/2026-08-02-focus-group-subscription/01-cast.md",
+  ".claude/workflows/runs/2026-08-02-focus-group-subscription/02-trace.md",
+  ".claude/workflows/runs/2026-08-02-focus-group-subscription/03-results.md",
+  ".claude/workflows/runs/2026-08-02-focus-group-subscription/EXECUTION-FLOW.md",
   ".claude/workflows/tt-focus-group.js",
   ".claude/workflows/tt-writing-room.js",
 ];
@@ -41,6 +46,7 @@ const groupOrder = [
   ["skills", "스킬"],
   ["agents", "에이전트"],
   ["workflows", "워크플로"],
+  ["workflow-runs", "워크플로 런"],
   ["runs", "팀 런"],
 ];
 
@@ -60,6 +66,7 @@ function classify(path) {
   if (path === ".claude/TEAM.md") return "team";
   if (path.startsWith(".claude/skills/")) return "skills";
   if (path.startsWith(".claude/agents/")) return "agents";
+  if (path.startsWith(".claude/workflows/runs/")) return "workflow-runs";
   if (path.startsWith(".claude/workflows/")) return "workflows";
   if (path.startsWith(".claude/team-runs/")) return "runs";
   return "other";
@@ -103,6 +110,9 @@ function setStats(paths) {
     runs: new Set(paths
       .filter((path) => classify(path) === "runs")
       .map((path) => path.split("/").slice(2, 3).join(""))).size,
+    workflowRuns: new Set(paths
+      .filter((path) => classify(path) === "workflow-runs")
+      .map((path) => path.split("/").slice(3, 4).join(""))).size,
   };
 
   const values = document.querySelectorAll("#stats .stat-value");
@@ -110,6 +120,7 @@ function setStats(paths) {
   values[1].textContent = stats.agents;
   values[2].textContent = stats.workflows;
   values[3].textContent = stats.runs;
+  if (values[4]) values[4].textContent = stats.workflowRuns;
 }
 
 function renderGroups(paths) {
@@ -177,6 +188,42 @@ function renderRuns(paths) {
   });
 }
 
+function renderWorkflowRuns(paths) {
+  const runRoot = document.querySelector("#workflow-run-map");
+  if (!runRoot) return;
+  const runs = new Map();
+  for (const path of paths.filter((item) => item.startsWith(".claude/workflows/runs/"))) {
+    const [, , , runName] = path.split("/");
+    if (!runs.has(runName)) runs.set(runName, []);
+    runs.get(runName).push(path);
+  }
+
+  if (!runs.size) {
+    runRoot.innerHTML = `<p class="loading">아직 커밋된 워크플로 런이 없습니다.</p>`;
+    return;
+  }
+
+  runRoot.innerHTML = Array.from(runs.entries()).sort().reverse().map(([runName, files]) => {
+    const flow = files.find((path) => path.endsWith("EXECUTION-FLOW.md"));
+    const results = files.find((path) => path.endsWith("03-results.md"));
+    return `
+      <article class="run-card">
+        <p class="eyebrow">WORKFLOW RUN</p>
+        <h3>${escapeHtml(runName)}</h3>
+        <ul>
+          <li>산출물 ${files.length}개</li>
+          <li>${flow ? `<button class="file-button inline" type="button" data-path="${escapeHtml(flow)}">실행 흐름 열기</button>` : "실행 흐름 없음"}</li>
+          <li>${results ? `<button class="file-button inline" type="button" data-path="${escapeHtml(results)}">추출 결과 열기</button>` : "추출 결과 없음"}</li>
+        </ul>
+      </article>
+    `;
+  }).join("");
+
+  runRoot.querySelectorAll(".file-button").forEach((button) => {
+    button.addEventListener("click", () => selectFile(button.dataset.path));
+  });
+}
+
 async function selectFile(path) {
   state.activePath = path;
   document.querySelectorAll(".file-button").forEach((button) => {
@@ -205,9 +252,11 @@ async function main() {
   setStats(paths);
   renderGroups(paths);
   renderRuns(paths);
+  renderWorkflowRuns(paths);
 
   const preferred =
-    paths.find((path) => path.endsWith("team-runs/2026-08-02-bakery-last-day/05-final-manuscript.md"))
+    paths.find((path) => path.endsWith("workflows/runs/2026-08-02-focus-group-subscription/EXECUTION-FLOW.md"))
+    || paths.find((path) => path.endsWith("team-runs/2026-08-02-bakery-last-day/05-final-manuscript.md"))
     || paths.find((path) => path === ".claude/TEAM.md")
     || paths[0];
   if (preferred) await selectFile(preferred);

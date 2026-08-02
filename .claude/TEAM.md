@@ -52,8 +52,13 @@ Workflow(name: "tt-focus-group", args: {stimulus: "논의할 대상/질문", fie
 Agent(subagent_type: "persona-architect", prompt: "캐스트 브리프: ...")
 ```
 
-워크플로 스크립트는 `.claude/workflows/`에 있다. 실행 기록을 남길 때는
-`.claude/team-runs/{날짜}-{주제}/`에 산출물별 파일로 저장한다.
+워크플로 스크립트는 `.claude/workflows/`에 있다. 실행 기록은 방식별로 분리한다:
+- **팀 런** (리드가 지휘, Agent/SendMessage) → `.claude/team-runs/{날짜}-{주제}/`
+- **워크플로 런** (코드가 지휘, Workflow 도구) → `.claude/workflows/runs/{날짜}-{주제}/`
+
+두 형식 모두 단계별 산출물 + EXECUTION-FLOW.md(과정 분석)를 남긴다 — 결과만으로는
+과정의 결함이 보이지 않는다 (workflows/runs/2026-08-02-focus-group-subscription의
+args 문자열화 결함 사례 참조).
 
 ## 증거 경계 (전원 필수)
 

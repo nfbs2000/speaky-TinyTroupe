@@ -11,8 +11,19 @@ export const meta = {
 
 // ---------------------------------------------------------------------------
 // 입력 정규화
+// args가 JSON "문자열"로 도착하는 경우 방어 (2026-08-02 런 wf_2e7d5d8b-d85에서
+// stimulus에 args 전체가 들어가고 나머지 인자가 기본값으로 대체된 결함의 수정)
 // ---------------------------------------------------------------------------
-const input = typeof args === 'string' ? { stimulus: args } : (args || {})
+let raw = args
+if (typeof raw === 'string') {
+  const s = raw.trim()
+  if (s.startsWith('{')) {
+    try { raw = JSON.parse(s) } catch (e) { raw = { stimulus: raw } }
+  } else {
+    raw = { stimulus: raw }
+  }
+}
+const input = raw || {}
 if (!input.stimulus) {
   throw new Error('tt-focus-group에는 논의 대상이 필요하다. args: {stimulus: "논의할 대상/질문"}')
 }
@@ -174,5 +185,5 @@ return {
   phases_run: PHASES,
   trace,
   results,
-  note: '실행 기록을 남기려면 .claude/team-runs/{날짜}-{주제}/에 트레이스와 결과를 저장할 것.',
+  note: '실행 기록은 .claude/workflows/runs/{날짜}-{주제}/에 저장할 것 (설정·캐스트·트레이스·결과·EXECUTION-FLOW 분리). 팀 런 기록(team-runs/)과 구분한다.',
 }

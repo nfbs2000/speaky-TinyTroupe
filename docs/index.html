@@ -60,7 +60,7 @@
       }
       .links {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1rem;
         margin-top: 1.5rem;
       }
@@ -98,7 +98,7 @@
           <h1>TinyTroupe를 소스와 Claude 팀 산출물로 읽습니다</h1>
           <p>
             이 저장소는 Microsoft TinyTroupe 원전의 한국어 소스 가이드와, 그 방법론을
-            Claude 스킬·에이전트·팀 런으로 재현한 공개 산출물을 분리해서 보여준다.
+            Claude 스킬·에이전트·팀 런·워크플로 런으로 재현한 공개 산출물을 분리해서 보여준다.
           </p>
         </div>
         <img src="./tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
@@ -111,6 +111,10 @@
         <a class="link-card" href="./claude-team/">
           <strong>Claude 팀·스킬·런</strong>
           <span>.claude 폴더의 팀 정의, 스킬, 에이전트, workflow, team-runs 원문과 확인 코멘트.</span>
+        </a>
+        <a class="link-card" href="./claude-workflows/">
+          <strong>Claude 워크플로·런</strong>
+          <span>.claude/workflows의 동적 workflow 스크립트와 workflow run 기록, 결함 분석, 반복 실행 목록.</span>
         </a>
       </section>
     </main>

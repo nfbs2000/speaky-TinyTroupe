@@ -14,6 +14,7 @@
       </a>
       <nav aria-label="주요 링크">
         <a href="../guide/">소스 가이드</a>
+        <a href="../claude-workflows/">워크플로</a>
         <a href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude">GitHub .claude</a>
         <a href="#runs">팀 런</a>
       </nav>
@@ -26,7 +27,7 @@
           <h1>TinyTroupe 방법론을 Claude 스킬과 팀으로 재현한 공개판</h1>
           <p class="lead">
             이 페이지는 저장소의 <code>.claude</code> 폴더를 그대로 읽어 팀 정의, 에이전트,
-            스킬, 워크플로, 실제 팀 런 산출물을 보여준다. Python 실행이나 OpenAI API 키 없이
+            스킬, 워크플로, 실제 팀 런과 워크플로 런 산출물을 보여준다. Python 실행이나 OpenAI API 키 없이
             TinyTroupe의 persona, world, extraction, story 방법을 Claude 팀 작업 규율로 옮긴
             결과다.
           </p>
@@ -77,7 +78,8 @@
         <div><span class="stat-value">-</span><span class="stat-label">skills</span></div>
         <div><span class="stat-value">-</span><span class="stat-label">agents</span></div>
         <div><span class="stat-value">-</span><span class="stat-label">workflows</span></div>
-        <div><span class="stat-value">-</span><span class="stat-label">runs</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">team runs</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">workflow runs</span></div>
       </section>
 
       <section class="layout">
@@ -114,11 +116,23 @@
         </div>
         <div id="run-map" class="run-map"></div>
       </section>
+
+      <section class="runs-band" id="workflow-runs">
+        <div class="section-heading">
+          <p class="eyebrow">WORKFLOW RUNS</p>
+          <h2>코드가 지휘한 워크플로 실행 기록</h2>
+          <p>
+            <code>.claude/workflows/runs</code> 아래의 커밋된 파일을 자동으로 묶어 보여준다.
+            팀 런은 리드가 판단하고 워크플로 런은 코드가 순서를 고정한다. 두 기록은 섞지 않는다.
+          </p>
+        </div>
+        <div id="workflow-run-map" class="run-map"></div>
+      </section>
     </main>
 
     <footer>
       <strong>TinyTroupe Claude Team</strong>
-      <span>팀/스킬/런 문서는 공개 학습용 산출물이며, 시뮬레이션과 실제 인간 데이터를 구분한다.</span>
+      <span>팀/스킬/워크플로/런 문서는 공개 학습용 산출물이며, 시뮬레이션과 실제 인간 데이터를 구분한다.</span>
     </footer>
 
     <script src="./app.js" defer></script>

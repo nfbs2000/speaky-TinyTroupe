@@ -12,7 +12,17 @@ export const meta = {
   ],
 }
 
-const input = typeof args === 'string' ? { topic: args } : (args || {})
+// args가 JSON "문자열"로 도착하는 경우 방어 (tt-focus-group 런 wf_2e7d5d8b-d85 교훈)
+let raw = args
+if (typeof raw === 'string') {
+  const s = raw.trim()
+  if (s.startsWith('{')) {
+    try { raw = JSON.parse(s) } catch (e) { raw = { topic: raw } }
+  } else {
+    raw = { topic: raw }
+  }
+}
+const input = raw || {}
 
 // ---------------------------------------------------------------------------
 // 스키마
@@ -230,5 +240,5 @@ return {
   reactions: reactions ? { ...reactions, label: 'SIMULATED — 실제 설문 아님' } : null,
   edit_notes: edits,
   revised_draft: revised ? revised.draft : null,
-  next_step: '리드(메인 세션)가 모든 반환물을 읽고 최종 통합 원고를 직접 쓸 것 (tinytroupe-writing-room 스킬의 통합 단계). 실행 기록은 .claude/team-runs/{날짜}-{주제}/에 저장.',
+  next_step: '리드(메인 세션)가 모든 반환물을 읽고 최종 통합 원고를 직접 쓸 것 (tinytroupe-writing-room 스킬의 통합 단계). 실행 기록은 .claude/workflows/runs/{날짜}-{주제}/에 저장 (팀 런 기록 team-runs/와 구분).',
 }

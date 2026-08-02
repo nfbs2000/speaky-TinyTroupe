@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TinyTroupe Claude Workflows | Runs</title>
+    <link rel="stylesheet" href="../claude-team/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <img src="../TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
+        <span>TinyTroupe Claude Workflows</span>
+      </a>
+      <nav aria-label="주요 링크">
+        <a href="../">허브</a>
+        <a href="../guide/">소스 가이드</a>
+        <a href="../claude-team/">팀·스킬·런</a>
+        <a href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude/workflows">GitHub workflows</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">CLAUDE WORKFLOW ARTIFACT</p>
+          <h1>코드가 지휘한 TinyTroupe workflow와 실행 기록</h1>
+          <p class="lead">
+            이 페이지는 <code>.claude/workflows</code> 아래의 workflow 스크립트와
+            <code>.claude/workflows/runs</code> 실행 문서를 그대로 읽어 보여준다.
+            팀 런은 사람이 리드하며 판단을 되묻고, 워크플로 런은 코드가 정한 순서대로 반복 실행한다.
+          </p>
+        </div>
+        <img class="intro-image" src="../tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
+      </section>
+
+      <section class="commentary-grid" aria-label="Codex 확인 코멘트">
+        <article>
+          <p class="eyebrow">WORKFLOW</p>
+          <h2>무엇이 추가됐나</h2>
+          <p>
+            <code>tt-focus-group</code>와 <code>tt-writing-room</code>는 args가 JSON 문자열로
+            들어오는 경우를 파싱하도록 보강됐다. 앞으로 workflow가 늘어나도 이 페이지는
+            <code>.claude/workflows</code> 트리를 읽어 목록을 갱신한다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">LATEST RUN</p>
+          <h2>focus-group-subscription</h2>
+          <p>
+            최신 워크플로 런은 동네 빵집 구독제 포커스 그룹이다. 캐스트 1회, 페르소나 턴
+            9회, 추출 1회로 총 11개 에이전트 호출이 성공했고, 구독 찬성 1명, 조건부 1명,
+            반대 1명으로 정리됐다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">OBSERVED BUG</p>
+          <h2>args 문자열화 결함</h2>
+          <p>
+            이 런은 결과만 보면 성공이지만, 과정 문서에서 args JSON 전체가 stimulus에 들어간
+            결함을 발견했다. LLM 페르소나가 의미적으로 복구했기 때문에 결함이 가려졌고,
+            그 교훈이 workflow 코드 수정으로 되먹임됐다.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">BOUNDARY</p>
+          <h2>시뮬레이션 경계</h2>
+          <p>
+            참가자와 발화, 합의·이견은 모두 SIMULATED다. 실제 소비자 조사나 사업성 근거가
+            아니다. 관찰된 사실은 workflow 실행 지표, 파일 산출물, 그리고 입력 정규화 결함이다.
+          </p>
+        </article>
+      </section>
+
+      <section class="stats-row" id="stats" aria-live="polite">
+        <div><span class="stat-value">-</span><span class="stat-label">scripts</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">runs</span></div>
+        <div><span class="stat-value">-</span><span class="stat-label">run docs</span></div>
+        <div><span class="stat-value">11</span><span class="stat-label">latest agents</span></div>
+        <div><span class="stat-value">9m10s</span><span class="stat-label">latest time</span></div>
+      </section>
+
+      <section class="layout">
+        <aside class="browser" aria-label=".claude/workflows 파일 목록">
+          <div class="browser-header">
+            <h2>workflow 원문</h2>
+            <p>커밋된 <code>main</code>의 <code>.claude/workflows</code> 파일만 불러온다.</p>
+          </div>
+          <div id="file-groups" class="file-groups">
+            <p class="loading">파일 목록을 불러오는 중입니다.</p>
+          </div>
+        </aside>
+
+        <section class="viewer" aria-label="선택 파일 원문">
+          <div class="viewer-toolbar">
+            <div>
+              <p class="eyebrow">RAW WORKFLOW VIEW</p>
+              <h2 id="viewer-title">파일을 선택하세요</h2>
+            </div>
+            <a id="github-link" class="button" href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude/workflows">GitHub에서 보기</a>
+          </div>
+          <pre id="file-content" class="file-content">왼쪽 목록에서 workflow script나 workflow run 문서를 선택하면 원문이 그대로 표시됩니다.</pre>
+        </section>
+      </section>
+
+      <section class="runs-band" id="runs">
+        <div class="section-heading">
+          <p class="eyebrow">WORKFLOW RUNS</p>
+          <h2>반복 실행 목록</h2>
+          <p>
+            <code>.claude/workflows/runs/{날짜}-{주제}</code> 아래의 커밋된 문서를 run 단위로 묶는다.
+            새 workflow나 새 run이 추가되면 커밋 후 이 목록에 자동 반영된다.
+          </p>
+        </div>
+        <div id="run-map" class="run-map"></div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>TinyTroupe Claude Workflows</strong>
+      <span>워크플로 산출물은 반복 실행 교육 자료이며, 시뮬레이션과 실제 인간 데이터를 구분한다.</span>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
