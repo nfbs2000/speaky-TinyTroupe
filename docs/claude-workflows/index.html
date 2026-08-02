@@ -3,73 +3,160 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TinyTroupe Claude Workflows | Runs</title>
-    <link rel="stylesheet" href="../claude-team/styles.css?v=20260802-layout-fix">
+    <meta name="description" content="TinyTroupe Claude 워크플로의 실제 실행 기록, 입력 결함, 팀 런과의 차이를 설명하는 한국어 교육 페이지">
+    <title>TinyTroupe | AI 팀을 워크플로로 고정하는 법</title>
+    <link rel="icon" href="../TinyTroupe_banner_logo_A_flat_bg-transparent.png" type="image/png">
+    <link rel="stylesheet" href="../claude-team/styles.css?v=20260802-evidence-course">
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="../">
         <img src="../TinyTroupe_banner_logo_A_flat_bg-transparent.png" alt="">
-        <span>TinyTroupe Claude Workflows</span>
+        <span>TinyTroupe Workflow Lab</span>
       </a>
       <nav aria-label="주요 링크">
-        <a href="../">허브</a>
-        <a href="../guide/">소스 가이드</a>
         <a href="../claude-team/">팀·스킬·런</a>
+        <a href="#observed-run">실제 런</a>
+        <a href="#failure">발견한 결함</a>
+        <a href="#decision">선택 기준</a>
         <a href="https://github.com/nfbs2000/speaky-TinyTroupe/tree/main/.claude/workflows">GitHub workflows</a>
       </nav>
     </header>
 
     <main>
-      <section class="intro">
+      <section class="intro intro-immersive">
+        <img class="intro-image" src="../tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
         <div class="intro-copy">
-          <p class="eyebrow">CLAUDE WORKFLOW ARTIFACT</p>
-          <h1>코드가 지휘한 TinyTroupe workflow와 실행 기록</h1>
+          <p class="eyebrow">DISCOVER WITH A TEAM · REPEAT WITH CODE</p>
+          <h1>팀이 찾은 절차를 코드가 반복하게 만든다</h1>
           <p class="lead">
-            이 페이지는 <code>.claude/workflows</code> 아래의 workflow 스크립트와
-            <code>.claude/workflows/runs</code> 실행 문서를 그대로 읽어 보여준다.
-            팀 런은 사람이 리드하며 판단을 되묻고, 워크플로 런은 코드가 정한 순서대로 반복 실행한다.
+            워크플로는 에이전트 목록이 아니다. 입력을 검사하고, 어떤 역할을 언제 실행하며,
+            무엇을 다음 단계의 증거로 넘기고, 어디서 실패시킬지를 코드로 고정한 실행 계약이다.
+            이 페이지는 실제 포커스 그룹 런의 성공과 결함을 함께 보여준다.
           </p>
         </div>
-        <img class="intro-image" src="../tinytroupe_stage.png" alt="TinyTroupe 시뮬레이션 무대">
       </section>
 
-      <section class="commentary-grid" aria-label="Codex 확인 코멘트">
-        <article>
-          <p class="eyebrow">WORKFLOW</p>
-          <h2>무엇이 추가됐나</h2>
-          <p>
-            <code>tt-focus-group</code>와 <code>tt-writing-room</code>는 args가 JSON 문자열로
-            들어오는 경우를 파싱하도록 보강됐다. 앞으로 workflow가 늘어나도 이 페이지는
-            <code>.claude/workflows</code> 트리를 읽어 목록을 갱신한다.
-          </p>
-        </article>
-        <article>
-          <p class="eyebrow">LATEST RUN</p>
-          <h2>focus-group-subscription</h2>
-          <p>
-            최신 워크플로 런은 동네 빵집 구독제 포커스 그룹이다. 캐스트 1회, 페르소나 턴
-            9회, 추출 1회로 총 11개 에이전트 호출이 성공했고, 구독 찬성 1명, 조건부 1명,
-            반대 1명으로 정리됐다.
-          </p>
-        </article>
-        <article>
-          <p class="eyebrow">OBSERVED BUG</p>
-          <h2>args 문자열화 결함</h2>
-          <p>
-            이 런은 결과만 보면 성공이지만, 과정 문서에서 args JSON 전체가 stimulus에 들어간
-            결함을 발견했다. LLM 페르소나가 의미적으로 복구했기 때문에 결함이 가려졌고,
-            그 교훈이 workflow 코드 수정으로 되먹임됐다.
-          </p>
-        </article>
-        <article>
-          <p class="eyebrow">BOUNDARY</p>
-          <h2>시뮬레이션 경계</h2>
-          <p>
-            참가자와 발화, 합의·이견은 모두 SIMULATED다. 실제 소비자 조사나 사업성 근거가
-            아니다. 관찰된 사실은 workflow 실행 지표, 파일 산출물, 그리고 입력 정규화 결함이다.
-          </p>
-        </article>
+      <section class="manifesto-band">
+        <div>
+          <p class="eyebrow">THE CORE LESSON</p>
+          <h2>자동화는 판단을 없애는 일이 아니라, 이미 검증한 판단을 반복하는 일이다</h2>
+        </div>
+        <p>
+          절차가 아직 흔들리는데 워크플로부터 만들면 오류도 빠르게 반복된다. 먼저 팀 런에서
+          역할과 품질 기준을 부딪쳐 보고, 입력·출력·실패 조건이 고정된 부분만 코드로 옮긴다.
+          실행 기록에서 결함을 찾으면 다시 스킬과 워크플로를 수정한다.
+        </p>
+      </section>
+
+      <section class="source-map-band" aria-labelledby="workflow-map-title">
+        <div class="section-heading">
+          <p class="eyebrow">TWO WORKFLOWS</p>
+          <h2 id="workflow-map-title">현재 코드에 고정된 두 실행 경로</h2>
+          <p>둘 다 JSON 문자열 입력을 다시 파싱하고, 구조화 반환 스키마와 단계별 barrier를 사용한다.</p>
+        </div>
+        <div class="decision-grid">
+          <article>
+            <h3><code>tt-focus-group</code></h3>
+            <p>캐스트 생성 → 각 페르소나의 THINK/TALK/DONE 턴 → 발화 근거 구조화 추출. 사용자·제품 반응의 탐색에 쓰되 실제 조사로 주장하지 않는다.</p>
+          </article>
+          <article>
+            <h3><code>tt-writing-room</code></h3>
+            <p>브리프 → 캐스트 → 씬 플랜 → 초안 → 독자/편집 병렬 검증 → 수정. 팀 런에서 발견한 라이팅룸 순서를 반복 가능한 파이프라인으로 만든다.</p>
+          </article>
+          <article>
+            <h3>공통 계약</h3>
+            <p>에이전트가 구조화 값을 반환하고 산출물을 파일로 남긴다. 런 결과와 실행 분석은 <code>.claude/workflows/runs</code>에 분리해 저장한다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="evidence-section" id="observed-run">
+        <div class="section-heading">
+          <p class="eyebrow">OBSERVED WORKFLOW RUN</p>
+          <h2>동네 빵집 구독제 모의 포커스 그룹</h2>
+          <p><code>2026-08-02-focus-group-subscription</code>의 journal 및 커밋 산출물에 기록된 실행이다.</p>
+        </div>
+        <div class="challenge-path">
+          <article>
+            <span class="step-number">01</span>
+            <h3>Cast</h3>
+            <p><code>persona-architect</code> 1개가 생활 패턴과 경제 판단이 다른 시뮬레이션 참가자 3명을 구성했다.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <h3>Simulate</h3>
+            <p>3명 × 3단계로 <code>tiny-person-actor</code> 9개가 THINK → TALK → DONE 턴을 수행했다.</p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <h3>Extract</h3>
+            <p>추출 에이전트 1개가 참가자별 입장과 근거, 합의·이견을 트레이스에서 구조화했다.</p>
+          </article>
+          <article>
+            <span class="step-number">11</span>
+            <h3>에이전트 성공</h3>
+            <p>오류 0, 스킵 0, 빈 반환 0. 실행 시간 9분 10초, 사람 개입 0회로 기록됐다.</p>
+          </article>
+          <article>
+            <span class="step-number">161K</span>
+            <h3>토큰 비용</h3>
+            <p>총 161,542 토큰. 누적 트레이스 전체를 매 턴 전달해 후반 턴 비용이 선형으로 증가했다.</p>
+          </article>
+          <article>
+            <span class="step-number">3</span>
+            <h3>모의 입장</h3>
+            <p>찬성 1, 조건부 1, 반대 1. 이것은 제품 아이디어를 비판할 관점을 찾은 것이지 실제 수요를 측정한 것이 아니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="boundary-band" id="failure">
+        <div>
+          <p class="eyebrow">FAILURE FOUND AFTER SUCCESS</p>
+          <h2>11개 에이전트가 성공했지만, 호출 인자는 절반쯤 무시됐다</h2>
+        </div>
+        <div class="boundary-list">
+          <p><strong>증상</strong>: 1단계 자극과 월드 헤더에 stimulus 문장이 아니라 호출 <code>args</code> JSON 전체가 들어갔다.</p>
+          <p><strong>원인</strong>: 런타임이 객체 대신 JSON 문자열을 넘겼고, 기존 정규화가 그 문자열 전체를 stimulus로 취급했다.</p>
+          <p><strong>왜 결과가 나왔나</strong>: LLM 배우와 추출기가 오염된 문자열 안에서 의도한 질문과 필드를 다시 찾아 의미적으로 복구했다.</p>
+          <p><strong>조치</strong>: <code>tt-focus-group.js</code>와 <code>tt-writing-room.js</code>에 JSON 문자열 파싱 방어가 추가됐다.</p>
+          <p><strong>교훈</strong>: 결과의 자연스러움은 파이프라인 정확성의 증거가 아니다. 입력 원문과 중간 트레이스가 필요하다.</p>
+        </div>
+      </section>
+
+      <section class="decision-band" id="decision">
+        <div>
+          <p class="eyebrow">OPERATING DECISION</p>
+          <h2>학생이 자기 프로젝트에서 선택하는 기준</h2>
+        </div>
+        <div class="decision-grid">
+          <article>
+            <h3>팀을 먼저 쓸 때</h3>
+            <p>문제 정의가 모호하거나, 역할 간 충돌이 품질을 높이거나, 중간 결과에 이의를 제기해야 할 때.</p>
+          </article>
+          <article>
+            <h3>워크플로로 옮길 때</h3>
+            <p>각 단계의 입력·출력 스키마, 중단 조건, 재시도 규칙, 증거 파일이 이미 검증됐을 때.</p>
+          </article>
+          <article>
+            <h3>자동화를 멈출 때</h3>
+            <p>인간 데이터, 법적 판단, 실제 돈, 안전처럼 시뮬레이션만으로 결론내릴 수 없는 경계에 도달했을 때.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="boundary-band">
+        <div>
+          <p class="eyebrow">SIMULATION BOUNDARY</p>
+          <h2>결과를 현실로 과장하지 않는다</h2>
+        </div>
+        <div class="boundary-list">
+          <p>한지우·오미숙·강병철은 전부 생성된 페르소나이며 실제 응답자가 아니다.</p>
+          <p>합의된 구독 조건은 아이디어 후보이지 사업성, 가격 수용도, 시장 규모의 근거가 아니다.</p>
+          <p>현실 판단으로 올리려면 실제 고객 인터뷰나 설문을 같은 질문 구조로 수행하고 시뮬레이션과 차이를 비교해야 한다.</p>
+          <p>이번 런에서 관찰된 사실은 에이전트 실행 지표, 파일 산출, 토큰 증가, 입력 문자열화 결함이다.</p>
+        </div>
       </section>
 
       <section class="stats-row" id="stats" aria-live="polite">
@@ -83,8 +170,9 @@
       <section class="layout">
         <aside class="browser" aria-label=".claude/workflows 파일 목록">
           <div class="browser-header">
+            <p class="eyebrow">SOURCE EVIDENCE</p>
             <h2>workflow 원문</h2>
-            <p>커밋된 <code>main</code>의 <code>.claude/workflows</code> 파일만 불러온다.</p>
+            <p>커밋된 <code>main</code>의 스크립트와 실행 문서를 GitHub raw에서 불러온다.</p>
           </div>
           <div id="file-groups" class="file-groups">
             <p class="loading">파일 목록을 불러오는 중입니다.</p>
@@ -107,20 +195,17 @@
         <div class="section-heading">
           <p class="eyebrow">WORKFLOW RUNS</p>
           <h2>반복 실행 목록</h2>
-          <p>
-            <code>.claude/workflows/runs/{날짜}-{주제}</code> 아래의 커밋된 문서를 run 단위로 묶는다.
-            새 workflow나 새 run이 추가되면 커밋 후 이 목록에 자동 반영된다.
-          </p>
+          <p><code>.claude/workflows/runs/{날짜}-{주제}</code>의 문서를 런 단위로 묶어 보여준다.</p>
         </div>
         <div id="run-map" class="run-map"></div>
       </section>
     </main>
 
     <footer>
-      <strong>TinyTroupe Claude Workflows</strong>
-      <span>워크플로 산출물은 반복 실행 교육 자료이며, 시뮬레이션과 실제 인간 데이터를 구분한다.</span>
+      <strong>TinyTroupe Workflow Lab</strong>
+      <span>성공 결과보다 입력, 중간 상태, 실패 조건을 먼저 검증한다.</span>
     </footer>
 
-    <script src="./app.js?v=20260802-layout-fix" defer></script>
+    <script src="./app.js?v=20260802-evidence-course" defer></script>
   </body>
 </html>

@@ -268,6 +268,16 @@ async function selectFile(path, options = {}) {
   }
 }
 
+function bindEvidenceLinks() {
+  document.querySelectorAll("[data-open-path]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const path = button.dataset.openPath;
+      if (!state.paths.includes(path)) return;
+      await selectFile(path, { focusViewer: true });
+    });
+  });
+}
+
 async function main() {
   const paths = await loadTree();
   state.paths = paths;
@@ -275,6 +285,7 @@ async function main() {
   renderGroups(paths);
   renderRuns(paths);
   renderWorkflowRuns(paths);
+  bindEvidenceLinks();
 
   const preferred =
     paths.find((path) => path.endsWith("workflows/runs/2026-08-02-focus-group-subscription/EXECUTION-FLOW.md"))
